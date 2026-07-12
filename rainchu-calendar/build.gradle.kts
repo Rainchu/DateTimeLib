@@ -27,7 +27,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    buildTypes {
+ /*   buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -35,7 +35,7 @@ android {
                 "proguard-rules.pro"
             )
         }
-    }
+    }*/
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
