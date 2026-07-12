@@ -5,16 +5,12 @@ plugins {
 
 android {
     namespace = "com.rainchu.datetimelib"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.rainchu.datetimelib"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -23,9 +19,11 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = false
-            }
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -34,12 +32,8 @@ android {
     }
     buildFeatures {
         compose = true
-    }
-
-    buildFeatures {
         dataBinding = true
     }
-
 }
 
 dependencies {

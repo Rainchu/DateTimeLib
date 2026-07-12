@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.rainchu.rainchucalendar"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 24
@@ -31,9 +31,7 @@ kotlin {
     }
 }
 
-
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
