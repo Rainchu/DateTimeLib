@@ -1,5 +1,9 @@
+import org.gradle.api.publish.maven.MavenPublication
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
+    id("maven-publish")
 }
 
 android {
@@ -23,11 +27,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-}
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
 
-kotlin {
-    compilerOptions {
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    publishing {
+        singleVariant("release")
     }
 }
 
@@ -39,7 +46,20 @@ dependencies {
     implementation(libs.material)
 
     testImplementation(libs.junit)
-
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.Rainchu"
+                artifactId = "DateTimeLib"
+                version = "1.0.2"
+            }
+        }
+    }
 }
